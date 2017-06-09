@@ -26,7 +26,9 @@
 
     },
 
-    "blacklist": ["repository-1-name", "repository-2-name"]
+    "blacklist": ["repository-1-name", "repository-2-name"],
+
+    "whitelist": ["repository-1-name", "repository-2-name"]
 
   }
 

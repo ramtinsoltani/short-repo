@@ -11,7 +11,7 @@ let template = {
 
 };
 
-let rendered = '';
+let rendered = '', renderedUser = '', user;
 let options = {
 
   url: 'https://api.github.com/user',
@@ -34,14 +34,19 @@ request(options, function(error, response, body) {
 
   }
 
-  let user = JSON.parse(body);
-  let renderedUser = '';
+  user = JSON.parse(body);
 
   renderedUser = template.user.replace('{{profile}}', user.html_url)
                               .replace('{{avatar}}', user.avatar_url)
-                              .replace('{{username}}', user.name);
+                              .replace('{{username}}', user.name ? user.name : user.login);
 
-  options.url = 'https://api.github.com/user/repos?sort=updated';
+  getRepos([], 1);
+
+});
+
+let getRepos = function(allRepos, page) {
+
+  options.url = 'https://api.github.com/user/repos?sort=updated&per_page=100&page=' + page;
 
   request(options, function(error, response, body) {
 
@@ -55,52 +60,68 @@ request(options, function(error, response, body) {
 
     }
 
-    let repos = JSON.parse(body);
-    let ownerCount = 0, renderedRepos = '';
+    if ( ! JSON.parse(body).length ) {
 
-    for ( let index in repos ) {
+      render(allRepos);
 
-      let repo = repos[index];
-
-      if ( repo.owner.id === user.id ) ownerCount++;
-
-      if ( ( ! config.repos.privateOnly || repo.private ) &&
-         ( ! config.repos.ownerOnly || repo.owner.id === user.id ) &&
-         ( config.repos.blacklist.indexOf(repo.name) === -1 ) ) {
-
-        let renderedRepo = template.repo;
-
-        renderedRepo = renderedRepo.replace('{{link}}', repo.html_url)
-                                   .replace('{{window}}', config.repos.newTab ? '_blank' : '_self')
-                                   .replace('{{name}}', repo.name);
-
-        for ( let cover in config.repos.covers ) {
-
-          if ( config.repos.covers[cover].indexOf(repo.name) !== -1 ) {
-
-            renderedRepo = renderedRepo.replace('{{cover}}', cover);
-
-          }
-
-        }
-
-        renderedRepos += renderedRepo;
-
-      }
+      return;
 
     }
 
-    renderedUser = renderedUser.replace('{{repocount}}', ownerCount);
+    allRepos = allRepos.concat(JSON.parse(body));
 
-    rendered = template.page.replace('{{title}}', config.page.title)
-                            .replace('{{favicon}}', config.page.favicon)
-                            .replace('{{user}}', renderedUser)
-                            .replace('{{repos}}', renderedRepos);
-
-    fs.writeFileSync('./index.html', rendered);
-
-    console.log(':)');
+    getRepos(allRepos, ++page);
 
   });
 
-});
+};
+
+let render = function(repos) {
+
+  let ownerCount = 0, renderedRepos = '';
+
+  for ( let index in repos ) {
+
+    let repo = repos[index];
+
+    if ( repo.owner.id === user.id ) ownerCount++;
+
+    if ( ( ! config.repos.privateOnly || repo.private ) &&
+       ( ! config.repos.ownerOnly || repo.owner.id === user.id ) &&
+       ( config.repos.blacklist.indexOf(repo.name) === -1 ) &&
+       ( ! config.repos.whitelist.length || config.repos.whitelist.indexOf(repo.name) !== -1 ) ) {
+
+      let renderedRepo = template.repo;
+
+      renderedRepo = renderedRepo.replace('{{link}}', repo.html_url)
+                                 .replace('{{window}}', config.repos.newTab ? '_blank' : '_self')
+                                 .replace('{{name}}', repo.name);
+
+      for ( let cover in config.repos.covers ) {
+
+        if ( config.repos.covers[cover].indexOf(repo.name) !== -1 ) {
+
+          renderedRepo = renderedRepo.replace('{{cover}}', cover);
+
+        }
+
+      }
+
+      renderedRepos += renderedRepo;
+
+    }
+
+  }
+
+  renderedUser = renderedUser.replace('{{repocount}}', ownerCount);
+
+  rendered = template.page.replace('{{title}}', config.page.title)
+                          .replace('{{favicon}}', config.page.favicon)
+                          .replace('{{user}}', renderedUser)
+                          .replace('{{repos}}', renderedRepos);
+
+  fs.writeFileSync('./index.html', rendered);
+
+  console.log(':)');
+
+};

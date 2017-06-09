@@ -21,5 +21,6 @@ The config object contains the following properties:
 - `repo.ownerOnly`: Indicates if only repositories should be shown that you own (not collaborating).
 - `repo.covers`: Add URLs to images as property name, with an array of repository names to associate with the cover as value. Example: `"http://website.com/image.jpg":["first-repo","second-repo"]`
 - `repo.blacklist`: Add any repository names which should be ignored.
+- `repo.whitelist`: Add the repository names which you want to keep (the rest will be ignored).
 
 Finally, run `node generate.js` to generate the `index.html` file. If you like what you see, set it as your browser's homepage for quick access to your repositories on Github.
