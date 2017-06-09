@@ -1,0 +1,41 @@
+<html>
+
+  <head>
+
+    <title>{{title}}</title>
+
+    <link rel="stylesheet" type="text/css" href="./config/templates/styles.css" media="screen" />
+    <link rel="icon" href="{{favicon}}">
+
+    <script>
+
+      function search(event) {
+
+        if ( event.keyCode === 13 ) window.open('https://google.com/search?q=' + document.getElementById('text').value , '_self');
+
+      }
+
+    </script>
+
+  </head>
+
+  <main>
+
+    {{user}}
+
+    <span class="search-box">
+
+      <span class="google-icon" onclick="window.open('https://google.com', '_self')"></span>
+      <input id="text" class="search-text" type="text" placeholder="Search Google" onkeypress="search(event)" autofocus></input>
+
+    </span>
+
+    <span class="container">
+
+      {{repos}}
+
+    </span>
+
+  </main>
+
+</html>

@@ -1,0 +1,212 @@
+body {
+
+  padding: 0;
+  margin: 0;
+
+}
+
+main {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+
+}
+
+.user-box {
+
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  flex-flow: row;
+  height: 120px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin-left: 30px;
+  margin-top: 30px;
+  z-index: 100;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: box-shadow 0.5s, background-color 0.5s;
+  cursor: default;
+
+}
+
+.user-box:hover {
+
+  box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+  background-color: #f3f3f3;
+  cursor: pointer;
+
+}
+
+.avatar {
+
+  background-position: center;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 20px;
+  display: flex;
+  border-radius: 5px;
+
+}
+
+.user-info {
+
+  display: flex;
+  flex-flow: column;
+  font-family: tahoma;
+  justify-content: left;
+  margin-top: 30px;
+  margin-right: 30px;
+
+}
+
+.username {
+
+  display: flex;
+  font-size: 24px;
+  color: black;
+  margin-top: 5px;
+
+}
+
+.repo-count {
+
+  display: flex;
+  font-size: 16px;
+  color: #696969;
+  margin-top: 5px;
+
+}
+
+.search-box {
+
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  height: 80px;
+  width: 70%;
+  margin: 200px 100px 0px 100px;
+
+}
+
+.google-icon {
+
+  cursor: pointer;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1000px-Google_%22G%22_Logo.svg.png);
+  background-size: cover;
+  margin-right: 20px;
+  opacity: 0.7;
+  transition: opacity 0.5s;
+
+}
+
+.google-icon:hover {
+
+  opacity: 1;
+
+}
+
+input.search-text {
+
+  height: 60px;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: box-shadow 0.5s;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  font-family: tahoma;
+  font-size: 16px;
+  padding: 0 20px 0 20px;
+
+}
+
+input.search-text:hover {
+
+  box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+
+}
+
+.container {
+
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin: 50px 100px 100px 100px;
+
+}
+
+.repo {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  width: 30%;
+  box-shadow: 0 2px 10px #ccc;
+  transition: box-shadow 0.5s;
+  margin: 10px;
+  cursor: default;
+  overflow: hidden;
+
+}
+
+.repo:hover {
+
+  box-shadow: 0 2px 15px #000;
+  cursor: pointer;
+
+}
+
+.repo:hover > .name {
+
+  background-color: #171717;
+
+}
+
+.repo:hover > .cover {
+
+  filter: blur(0px);
+
+}
+
+.repo > .cover {
+
+  width: 120%;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+  transition: filter 0.5s;
+  margin: -5px -10px -10px -5px;
+
+}
+
+.repo > .name {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20 0 20 0;
+  width: 100%;
+  background-color: #2f2f2f;
+  font-family: tahoma;
+  font-size: 20px;
+  color: white;
+  transition: background-color 0.5s;
+  z-index: 99;
+
+}
