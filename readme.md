@@ -24,3 +24,5 @@ The config object contains the following properties:
 - `repo.whitelist`: Add the repository names which you want to keep (the rest will be ignored).
 
 Finally, run `node generate.js` to generate the `index.html` file. If you like what you see, set it as your browser's homepage for quick access to your repositories on Github.
+
+**NOTE:** You can save your images in `.covers` directory (it doesn't exist by default) which will get ignored.
