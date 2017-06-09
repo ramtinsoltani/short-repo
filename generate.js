@@ -89,7 +89,7 @@ let render = function(repos) {
     if ( ( ! config.repos.privateOnly || repo.private ) &&
        ( ! config.repos.ownerOnly || repo.owner.id === user.id ) &&
        ( config.repos.blacklist.indexOf(repo.name) === -1 ) &&
-       ( ! config.repos.whitelist.length || config.repos.whitelist.indexOf(repo.name) !== -1 ) ) {
+       ( ! config.repos.whitelist || ! config.repos.whitelist.length || config.repos.whitelist.indexOf(repo.name) !== -1 ) ) {
 
       let renderedRepo = template.repo;
 
