@@ -1,5 +1,6 @@
 {
   "name": "short-repo",
+  "version": "0.0.1",
   "description": "Quick access to your Github repositories from browser homepage.",
   "main": "generate.js",
   "author": "Ramtin Soltani <ramtinsoltani93@gmail.com> (http://ramt.in)",
