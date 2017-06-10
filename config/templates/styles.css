@@ -20,7 +20,9 @@ main {
   align-items: left;
   justify-content: left;
   flex-flow: row;
+  max-width: 120px;
   height: 120px;
+  overflow: hidden;
   position: fixed;
   left: 0;
   top: 0;
@@ -30,7 +32,7 @@ main {
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  transition: box-shadow 0.5s, background-color 0.5s;
+  transition: box-shadow 0.5s, background-color 0.5s, max-width 0.5s;
   cursor: default;
 
 }
@@ -40,6 +42,13 @@ main {
   box-shadow: 0 2px 15px rgba(0,0,0,0.4);
   background-color: #f3f3f3;
   cursor: pointer;
+  max-width: 500px;
+
+}
+
+.user-box:hover > .user-info {
+
+  opacity: 1;
 
 }
 
@@ -49,6 +58,7 @@ main {
   background-size: cover;
   height: 100px;
   width: 100px;
+  position: absolute;
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 20px;
@@ -65,6 +75,10 @@ main {
   justify-content: left;
   margin-top: 30px;
   margin-right: 30px;
+  opacity: 0;
+  margin-left: 140px;
+  transition: opacity 0.5s;
+  min-width: 250px;
 
 }
 

@@ -113,7 +113,7 @@ let render = function(repos) {
 
   }
 
-  renderedUser = renderedUser.replace('{{repocount}}', ownerCount);
+  renderedUser = renderedUser.replace('{{repocount}}', ownerCount + ownerCount > 1 ? ' repositories' : ' repository');
 
   rendered = template.page.replace('{{title}}', config.page.title)
                           .replace('{{favicon}}', config.page.favicon)
