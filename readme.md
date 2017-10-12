@@ -4,7 +4,7 @@ Written in Node.js, this is used to generate a HTML page (meant to be your brows
 
 # Screenshot
 
-![Screenshot](./screenshot/screenshot.jpg)
+![Screenshot](./.screenshot/screenshot.jpg)
 
 # How to use
 
