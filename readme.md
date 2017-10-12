@@ -2,6 +2,10 @@
 
 Written in Node.js, this is used to generate a HTML page (meant to be your browser's homepage) which lists your repositories on Github as shortcuts and includes a Google search textbox (autofocused).
 
+# Screenshot
+
+![Screenshot](./screenshot/screenshot.jpg)
+
 # How to use
 
 First of all, `npm install` to install the dependencies.
@@ -25,4 +29,4 @@ The config object contains the following properties:
 
 Finally, run `node generate.js` to generate the `index.html` file. If you like what you see, set it as your browser's homepage for quick access to your repositories on Github.
 
-**NOTE:** You can save your images in `.covers` directory (it doesn't exist by default) which will get ignored.
+**NOTE:** You can save your images in `.covers` directory (it doesn't exist by default) which will get gitignored.
