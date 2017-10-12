@@ -2,8 +2,6 @@
 
 Written in Node.js, this is used to generate a HTML page (meant to be your browser's homepage) which lists your repositories on Github as shortcuts and includes a Google search textbox (autofocused).
 
-# Screenshot
-
 ![Screenshot](./.screenshot/screenshot.jpg)
 
 # How to use
